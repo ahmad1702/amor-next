@@ -80,7 +80,7 @@ const PostPage = ({ post }: PostPageProps) => {
                         <h6 className='text-neutral-content'>Created at</h6>
                         <div className='markdown-container'>
                             <ReactMarkdown>
-                                {post.content}
+                                {post.content || ''}
                                 {/* {mdParser.render(post.content)} */}
                             </ReactMarkdown>
                         </div>

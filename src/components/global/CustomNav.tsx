@@ -71,9 +71,6 @@ const CustomNav = ({ textColor }: CustomNavProps) => {
                     {logobutton}
                 </div>
                 <div className="navbar-end hidden lg:flex gap-2">
-                    {status === 'unauthenticated' && (
-                        <div className='btn' onClick={() => signIn()}>Login</div>
-                    )}
                     {router.pathname !== '/createpost' && status === 'authenticated' && (
                         <Link href="/createpost" className={`btn btn-primary`}>
                             <PlusIcon className='w-6 h-6' />

@@ -32,9 +32,9 @@ const Home = () => {
           </div>
           <div className="text-6xl"></div>
         </header>
-        {posts && (
+        {/* {posts && (
           <BlogList posts={posts} />
-        )}
+        )} */}
         <section className="text-gray-600 body-font">
           <div className="container px-5 py-24 mx-auto">
             <div className="flex flex-col">
@@ -42,8 +42,8 @@ const Home = () => {
                 <div className="w-24 h-full bg-primary"></div>
               </div>
               <div className="flex flex-wrap sm:flex-row flex-col py-6 mb-12">
-                <h1 className="sm:w-2/5 text-gray-900 font-medium title-font text-2xl mb-2 sm:mb-0">Space The Final Frontier</h1>
-                <p className="sm:w-3/5 leading-relaxed text-base sm:pl-10 pl-0">Street art subway tile salvia four dollar toast bitters selfies quinoa yuccie synth meditation iPhone intelligentsia prism tofu. Viral gochujang bitters dreamcatcher.</p>
+                <h1 className="sm:w-2/5 text-gray-900 font-medium title-font text-2xl mb-2 sm:mb-0">Blog | Amor My Decor</h1>
+                <p className="sm:w-3/5 leading-relaxed text-base sm:pl-10 pl-0">A collection of articles exploring a variety of topics in and around the design and decor space, developing new takes and bringing concept pieces to reality.</p>
               </div>
             </div>
             <div className="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4">
@@ -54,12 +54,7 @@ const Home = () => {
                   </div>
                   <h2 className="text-xl font-m◊edium title-font text-gray-900 mt-5">{post.title}</h2>
                   <p className="text-base leading-relaxed mt-2">{post.intro}</p>
-                  <Link href={`/posts/${post.id}`} className="btn btn-primary inline-flex items-center mt-3">
-                    Read More
-                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                      <path d="M5 12h14M12 5l7 7-7 7"></path>
-                    </svg>
-                  </Link>
+                  <Link href={`/posts/${post.id}`} className='btn btn-primary'>Read More</Link>
                 </div>
               ))}
             </div>
@@ -76,41 +71,21 @@ const Home = () => {
               <div className="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60">
                 <h2 className="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">Shooting Stars</h2>
                 <p className="leading-relaxed text-base mb-4">Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.</p>
-                <a className="text-primary inline-flex items-center">Learn More
-                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                  </svg>
-                </a>
               </div>
               <div className="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60">
                 <h2 className="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">The Catalyzer</h2>
                 <p className="leading-relaxed text-base mb-4">Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.</p>
-                <a className="text-primary inline-flex items-center">Learn More
-                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                  </svg>
-                </a>
               </div>
               <div className="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60">
                 <h2 className="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">Neptune</h2>
                 <p className="leading-relaxed text-base mb-4">Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.</p>
-                <a className="text-primary inline-flex items-center">Learn More
-                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                  </svg>
-                </a>
               </div>
               <div className="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60">
                 <h2 className="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">Melanchole</h2>
                 <p className="leading-relaxed text-base mb-4">Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.</p>
-                <a className="text-primary inline-flex items-center">Learn More
-                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                  </svg>
-                </a>
               </div>
             </div>
-            <button className="flex mx-auto mt-16 text-white bg-primary border-0 py-2 px-8 focus:outline-none hover:bg-primary rounded text-lg">Button</button>
+            {/* <button className="flex mx-auto mt-16 text-white bg-primary border-0 py-2 px-8 focus:outline-none hover:bg-primary rounded text-lg">Button</button> */}
           </div>
         </section>
       </main>
