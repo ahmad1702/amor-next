@@ -4,10 +4,15 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [
-    require('daisyui')
-  ],
+  plugins: [require("daisyui")],
   daisyui: {
-    themes: ['pastel']
-  }
+    themes: [
+      {
+        pastel: {
+          ...require("daisyui/src/colors/themes")["[data-theme=pastel]"],
+          primary: "#e0cdad",
+        },
+      },
+    ],
+  },
 };

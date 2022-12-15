@@ -31,14 +31,14 @@ const MdEditor = dynamic(() => import('react-markdown-editor-lite'), {
     ssr: false,
 });
 
-type CreatePostProps = {
+type EditPostPageProps = {
     session: Session;
 }
 type PostForm = Pick<Post, 'title' | 'intro' | 'content' | 'published'>
 
 const mdParser = new MarkdownIt(/* Markdown-it options */);
 
-const Createpost = ({ session }: CreatePostProps) => {
+const EditPostPage = ({ session }: EditPostPageProps) => {
     const router = useRouter()
     const [postForm, setPostForm] = useState<PostForm>({
         title: '',
@@ -148,4 +148,4 @@ const Createpost = ({ session }: CreatePostProps) => {
     )
 }
 
-export default Createpost
+export default EditPostPage

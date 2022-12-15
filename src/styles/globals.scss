@@ -4,22 +4,22 @@
 
 .markdown-container {
   h1 {
-    @apply mb-2 text-6xl font-extrabold;
+    @apply mb-2 text-4xl font-extrabold;
   }
   h2 {
-    @apply text-5xl font-extrabold;
-  }
-  h3 {
-    @apply text-4xl font-extrabold;
-  }
-  h4 {
     @apply text-3xl font-extrabold;
   }
-  h4 {
+  h3 {
     @apply text-2xl font-extrabold;
   }
-  h5 {
+  h4 {
     @apply text-xl font-extrabold;
+  }
+  h4 {
+    @apply text-lg font-extrabold;
+  }
+  h5 {
+    @apply text-lg font-bold;
   }
   ul,
   ol {
@@ -34,6 +34,10 @@
   a {
     @apply link-neutral link;
   }
+}
+
+.rc-md-editor {
+  @apply rounded-xl overflow-hidden
 }
 
 .bootstrap-container {

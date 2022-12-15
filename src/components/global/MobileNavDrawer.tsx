@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
-import { LinkType } from './CustomNav'
-import Bars3BottomLeft from '@heroicons/react/24/solid/Bars3Icon.js'
+import Bars3BottomLeft from '@heroicons/react/24/solid/Bars3Icon.js';
 import Link from 'next/link';
+import { useState } from 'react';
+import { LinkType } from './CustomNav';
 
 type MobileNavDrawerProps = {
     links: LinkType[];

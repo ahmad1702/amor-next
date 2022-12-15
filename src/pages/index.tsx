@@ -1,20 +1,19 @@
+/* eslint-disable @next/next/no-img-element */
 import { signIn, signOut, useSession } from "next-auth/react";
 import Head from "next/head";
-import { prisma } from '../server/db/client';
 
 import { Post } from "@prisma/client";
-import { trpc } from "../utils/trpc";
+import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import CustomNav from "../components/global/CustomNav";
 import Footer from "../components/global/Footer";
-import BlogList from "../components/blog/BlogList";
+import { trpc } from "../utils/trpc";
+import { fadeVariants } from "../utils/utils";
+import ContactMe from "../components/home/ContactMe";
 
-const HEADER_BG = "https://images.unsplash.com/photo-1669860037865-2fe02dc00e01?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1860&q=80"
-type HomeProps = {
-  // posts: Post[]
-}
+const HEADER_BG = "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1760&q=80"
 const Home = () => {
-  const hello = trpc.example.hello.useQuery({ text: "from tRPC" });
   const posts: Post[] | undefined = trpc.example.getPosts.useQuery().data
 
   return (
@@ -26,37 +25,69 @@ const Home = () => {
       </Head>
       <CustomNav />
       <main>
-        <header className={`h-screen flex flex-col justify-end p-20`} style={{ background: "url('https://images.unsplash.com/photo-1669860037865-2fe02dc00e01?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1860&q=80')", backgroundSize: 'cover', backgroundPosition: 'center' }}>
-          <div className="text-8xl font-extrabold uppercase">
-            Amor My Decor
+        <div className="h-[6rem]"></div>
+        <motion.header
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeVariants("up")}
+          className={`relative h-[70vh] p-10 lg:p-20 text-white mx-5 md:mx-10 rounded-xl overflow-hidden`}
+        >
+          <div className="absolute top-0 left-0 h-full w-full z-10 flex items-center flex-col justify-center">
+            <div className="text-5xl lg:text-[8rem] font-extrabold uppercase text-center">
+              Amor My Decor
+            </div>
+            <div className="text-2xl lg:text-3xl uppercase text-center font-light">
+              Beautiful, Functional, Personalized Spaces
+            </div>
           </div>
-          <div className="text-6xl"></div>
-        </header>
-        {/* {posts && (
-          <BlogList posts={posts} />
-        )} */}
+          <Image className="h-full w-full object-cover object-[50%,80%] brightness-75" fill src={HEADER_BG} alt="" />
+        </motion.header>
         <section className="text-gray-600 body-font">
           <div className="container px-5 py-24 mx-auto">
             <div className="flex flex-col">
               <div className="h-1 bg-gray-200 rounded overflow-hidden">
                 <div className="w-24 h-full bg-primary"></div>
               </div>
-              <div className="flex flex-wrap sm:flex-row flex-col py-6 mb-12">
-                <h1 className="sm:w-2/5 text-gray-900 font-medium title-font text-2xl mb-2 sm:mb-0">Blog | Amor My Decor</h1>
+              {/* <div className="flex flex-wrap sm:flex-row flex-col py-6 mb-12">
+                <h1 className="sm:w-2/5 text-gray-900 font-medium title-font text-5xl mb-2 sm:mb-0">Blog | Amor My Decor</h1>
                 <p className="sm:w-3/5 leading-relaxed text-base sm:pl-10 pl-0">A collection of articles exploring a variety of topics in and around the design and decor space, developing new takes and bringing concept pieces to reality.</p>
+              </div> */}
+              <div className="py-6 mb-3">
+                <h1 className="text-gray-900 font-bold tracking-tight  title-font text-8xl mb-2">Blog <span className="font-light ml-3">| Amor My Decor</span></h1>
+                <p className="leading-relaxed text-base">A collection of articles exploring a variety of topics in and around the design and decor space, developing new takes and bringing concept pieces to reality.</p>
               </div>
             </div>
             <div className="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4">
               {posts?.map(post => (
-                <div key={post.id} className="p-4 w-full md:w-1/3 sm:mb-0 mb-6">
+                <Link href={`/posts/${post.id}`} key={post.id} className="p-4 w-full md:w-1/3 sm:mb-0 mb-6 hover:bg-black/10 duration-300 cursor-pointer rounded-xl">
                   <div className="rounded-lg h-64 overflow-hidden">
                     <img alt="content" className="object-cover object-center h-full w-full" src="https://placeimg.com/400/400/arch" />
                   </div>
-                  <h2 className="text-xl font-m◊edium title-font text-gray-900 mt-5">{post.title}</h2>
-                  <p className="text-base leading-relaxed mt-2">{post.intro}</p>
-                  <Link href={`/posts/${post.id}`} className='btn btn-primary'>Read More</Link>
-                </div>
+                  <div className="flex justify-between items-center">
+                    <div>
+                      <h2 className="text-xl font-m◊edium title-font text-gray-900 mt-5">{post.title}</h2>
+                      <p className="text-base leading-relaxed mt-2">{post.intro}</p>
+                    </div>
+                    <Link href={`/posts/${post.id}`} className='btn btn-primary'>Read More</Link>
+                  </div>
+                </Link>
               ))}
+            </div>
+          </div>
+        </section>
+        <section className="text-gray-100 body-font bg-gray-800">
+          <div className="container px-10 sm:px-5 py-24 mx-auto">
+            <div className=" w-full mx-auto text-center">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="inline-block w-8 h-8 text-primary mb-8" viewBox="0 0 975.036 975.036">
+                <path d="M925.036 57.197h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.399 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l36 76c11.6 24.399 40.3 35.1 65.1 24.399 66.2-28.6 122.101-64.8 167.7-108.8 55.601-53.7 93.7-114.3 114.3-181.9 20.601-67.6 30.9-159.8 30.9-276.8v-239c0-27.599-22.401-50-50-50zM106.036 913.497c65.4-28.5 121-64.699 166.9-108.6 56.1-53.7 94.4-114.1 115-181.2 20.6-67.1 30.899-159.6 30.899-277.5v-239c0-27.6-22.399-50-50-50h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.4 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l35.9 75.8c11.601 24.399 40.501 35.2 65.301 24.399z"></path>
+              </svg>
+              <p className="leading-relaxed text-2xl font-light">
+                Our mission is to create beautiful, functional, and personalized spaces that reflect the unique personalities and lifestyles of our clients. We strive to exceed expectations by listening to our {"clients'"} vision and incorporating their feedback throughout the design process. Our ultimate goal is to help our clients fall in love with their homes and feel comfortable and happy in their surroundings.
+              </p>
+              <span className="inline-block h-1 w-10 rounded bg-primary mt-8 mb-6"></span>
+              <h2 className="text-gray-100 font-medium title-font tracking-wider text-sm">AMAL SANDID</h2>
+              <p className="text-gray-400">CEO & Founder</p>
             </div>
           </div>
         </section>
@@ -85,9 +116,9 @@ const Home = () => {
                 <p className="leading-relaxed text-base mb-4">Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.</p>
               </div>
             </div>
-            {/* <button className="flex mx-auto mt-16 text-white bg-primary border-0 py-2 px-8 focus:outline-none hover:bg-primary rounded text-lg">Button</button> */}
           </div>
         </section>
+        <ContactMe />
       </main>
       <Footer />
     </>

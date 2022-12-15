@@ -1,10 +1,10 @@
+import { PlusIcon } from '@heroicons/react/24/solid';
 import { useScroll } from 'framer-motion';
+import { useSession } from 'next-auth/react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import MobileNavDrawer from './MobileNavDrawer';
-import { PlusIcon } from '@heroicons/react/24/solid'
-import { signIn, useSession } from 'next-auth/react';
 
 export type LinkType = {
     name: string;
@@ -21,12 +21,13 @@ const links: LinkType[] = [
     },
 ]
 type CustomNavProps = {
+    initColor?: string;
     textColor?: string;
 }
-const CustomNav = ({ textColor }: CustomNavProps) => {
+const CustomNav = ({ textColor, initColor }: CustomNavProps) => {
     const { status } = useSession()
     const router = useRouter()
-    const logobutton = <Link href="/" className="btn btn-ghost text-xl tracking-tighter uppercase font-extrabold">AMOR MY DECOR</Link>
+    const logobutton = <Link href="/" className="btn btn-ghost text-xl tracking-tighter uppercase font-extrabold -ml-4 whitespace-nowrap">AMOR MY DECOR</Link>
     const [scrollPosition, setScrollPosition] = useState<number>(0)
 
     useEffect(() => {
@@ -49,7 +50,7 @@ const CustomNav = ({ textColor }: CustomNavProps) => {
     });
     return (
         <>
-            <div className={`navbar fixed z-[100] px-8 duration-300 ${textColor} ${scrollPosition > 0.05 ? `backdrop-blur-md bg-base-100/20 border-neutral-content/30 h-[63.5px]` : 'border-transparent py-5'}`}>
+            <div className={`navbar fixed z-[100] px-10 duration-150 ${scrollPosition > 0.05 ? `backdrop-blur-md bg-base-100/20 border-neutral-content/30 h-[63.5px] bg-gray-800/50 text-white ${textColor}` : `border-transparent py-5 ${initColor}`}`}>
                 {scrollPosition > 0.05 && (
                     <>
                         <div

@@ -19,6 +19,7 @@ specifiers:
   autoprefixer: ^10.4.7
   axios: ^1.2.0
   daisyui: ^2.42.1
+  date-fns: ^2.29.3
   eslint: ^8.26.0
   eslint-config-next: 13.0.2
   framer-motion: ^7.6.18
@@ -35,9 +36,12 @@ specifiers:
   react-markdown: ^8.0.4
   react-markdown-editor-lite: ^1.3.3
   sass: ^1.56.1
+  scroller-motion: ^1.2.1
   superjson: 1.9.1
   tailwindcss: ^3.2.0
+  tozod: ^3.0.0
   typescript: ^4.8.4
+  uuid: ^9.0.0
   zod: ^3.18.0
 
 dependencies:
@@ -51,6 +55,7 @@ dependencies:
   '@trpc/server': 10.4.3
   axios: 1.2.0
   daisyui: 2.42.1_2lwn2upnx27dqeg6hqdu7sq75m
+  date-fns: 2.29.3
   framer-motion: 7.6.18_biqbaboplfbrettd7655fr4n2y
   lodash-es: 4.17.21
   markdown-it: 13.0.1
@@ -61,7 +66,10 @@ dependencies:
   react-markdown: 8.0.4_kzbn2opkn2327fwg5yzwzya5o4
   react-markdown-editor-lite: 1.3.3_react@18.2.0
   sass: 1.56.1
+  scroller-motion: 1.2.1_um5ky2ttrvkqnr5la3jsnyhub4
   superjson: 1.9.1
+  tozod: 3.0.0_zod@3.19.1
+  uuid: 9.0.0
   zod: 3.19.1
 
 devDependencies:
@@ -1027,6 +1035,18 @@ packages:
   /damerau-levenshtein/1.0.8:
     resolution: {integrity: sha512-sdQSFB7+llfUcQHUQO3+B8ERRj0Oa4w9POWMI/puGtuf7gFywGmkaLCElnudfTiKZV+NvHqL0ifzdrI8Ro7ESA==}
     dev: true
+
+  /date-fns/2.29.3:
+    resolution: {integrity: sha512-dDCnyH2WnnKusqvZZ6+jA1O51Ibt8ZMRNkDZdyAyK4YfbDwa/cEmuztzG5pk6hqlp9aSBPYcjOlktquahGwGeA==}
+    engines: {node: '>=0.11'}
+    dev: false
+
+  /debounce-fn/4.0.0:
+    resolution: {integrity: sha512-8pYCQiL9Xdcg0UPSD3d+0KMlOjp+KGU5EPwYddgzQ7DATsg4fuUDjQtsYLmWjnk2obnNHgV3vE2Y4jejSOJVBQ==}
+    engines: {node: '>=10'}
+    dependencies:
+      mimic-fn: 3.1.0
+    dev: false
 
   /debug/2.6.9:
     resolution: {integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==}
@@ -2279,6 +2299,11 @@ packages:
       mime-db: 1.52.0
     dev: false
 
+  /mimic-fn/3.1.0:
+    resolution: {integrity: sha512-Ysbi9uYW9hFyfrThdDEQuykN4Ey6BuwPD2kpI5ES/nFTDn/98yxYNLZJcgUAKPT/mcrLLKaGzJR9YVxJrIdASQ==}
+    engines: {node: '>=8'}
+    dev: false
+
   /minimatch/3.1.2:
     resolution: {integrity: sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==}
     dependencies:
@@ -2888,6 +2913,20 @@ packages:
       loose-envify: 1.4.0
     dev: false
 
+  /scroller-motion/1.2.1_um5ky2ttrvkqnr5la3jsnyhub4:
+    resolution: {integrity: sha512-vrChwqXZ6T2r3nOqXQ62txAl3Jtw7ShiqPq7eNUCKsP/sjKpaHAX/ue7zM3IV0kS2ioFWWmzd5NOr9ugrT4m0Q==}
+    engines: {node: '>= 12'}
+    peerDependencies:
+      framer-motion: ^6.5.0 || ^7.0
+      react: ^16.8 || ^17.0 || ^18.0
+      react-dom: ^16.8 || ^17.0 || ^18.0
+    dependencies:
+      debounce-fn: 4.0.0
+      framer-motion: 7.6.18_biqbaboplfbrettd7655fr4n2y
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
+
   /semver/6.3.0:
     resolution: {integrity: sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw==}
     hasBin: true
@@ -3077,6 +3116,14 @@ packages:
     dependencies:
       is-number: 7.0.0
 
+  /tozod/3.0.0_zod@3.19.1:
+    resolution: {integrity: sha512-R03/moNPEGgWKoTdCsEJuyEoP6NtXyhWg9L9lJhF2XyCR2Ce9XE+yXaswaVmqyBpHsRPC2Pk38mK8Ex7iHaXcg==}
+    peerDependencies:
+      zod: ^3.0.0-alpha.2
+    dependencies:
+      zod: 3.19.1
+    dev: false
+
   /trim-lines/3.0.1:
     resolution: {integrity: sha512-kRj8B+YHZCc9kQYdWfJB2/oUl9rA99qbowYYBtr4ui4mZyAQ2JpvVBd/6U2YloATfqBhBTSMhTpgBHtU0Mf3Rg==}
     dev: false
@@ -3229,6 +3276,11 @@ packages:
 
   /uuid/8.3.2:
     resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
+    hasBin: true
+    dev: false
+
+  /uuid/9.0.0:
+    resolution: {integrity: sha512-MXcSTerfPa4uqyzStbRoTgt5XIe3x5+42+q1sDuy3R5MDk66URdLMOZe5aPX/SQd+kuYAh0FdP/pO28IkQyTeg==}
     hasBin: true
     dev: false
 
